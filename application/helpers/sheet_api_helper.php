@@ -25,17 +25,17 @@ function getOAuth2GoogleAPI()
     $CI =& get_instance();
     $data = $CI->config->item('OAuth2URL');
     return new OAuth2\GoogleAPI(
-        $data['base'].'/'.$data['auth'],
+        $data['base'].'/'.$data['token'],
         $data['redirect'],
         $CI->config->item('clientID'),
         $CI->config->item('clientSecret')
     );
 }
 
-function saveCredentials(array $data)
+function saveToken(array $data)
 {
     $config = createConfig();
-    file_put_contents($config['tokenDataFile'], $data);
+    file_put_contents($config['tokenDataFile'], serialize($data));
 }
 
 function buildURL()
@@ -68,5 +68,11 @@ function buildURL()
 			'scope' => implode(' ',$scopeList)
 		])
 	);
+}
+
+function createSpreadsheetAPI($oAuth)
+{
+    $api = new GoogleSpreadsheet\API($oAuth);
+    return $api;
 }
 ?>
