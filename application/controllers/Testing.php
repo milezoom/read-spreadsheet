@@ -23,6 +23,11 @@ class Testing extends CI_Controller
 
         $data['list'] = $spreadsheetList;
 
+        $this->pageTitle = 'List';
+        $this->headerText = 'Spreadsheet List';
+        $this->layout = 'Yes';
+        $this->layoutName = 'default';
+        $this->load->view('frontpage',$data);
         $this->load->view('lists', $data);
     }
 }

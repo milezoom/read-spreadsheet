@@ -21,6 +21,11 @@ class Authorized extends CI_Controller
             $data['is_exists'] = FALSE;
         }
 
+        $this->pageTitle = 'Token';
+        $this->headerText = 'Saving Token';
+        $this->layout = 'Yes';
+        $this->layoutName = 'default';
+        $this->load->view('frontpage',$data);
         $this->load->view('savingtoken', $data);
     }
 }
