@@ -7,6 +7,7 @@
     <title>Site name ::
         <?php echo $this->pageTitle; ?>
     </title>
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>"/>
 </head>
 
 <body>
@@ -24,6 +25,8 @@
             ?>
         </div>
     </footer>
+    <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-2.1.4.min.js"); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
 </body>
 
 </html>
