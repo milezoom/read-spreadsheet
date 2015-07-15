@@ -34,6 +34,7 @@ function getOAuth2GoogleAPI()
 
 function saveCredentials(array $data)
 {
-    //TODO: lanjutin 
+    $config = createConfig();
+    file_put_contents($config['tokenDataFile'], $data);
 }
 ?>
