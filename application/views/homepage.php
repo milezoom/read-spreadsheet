@@ -15,7 +15,7 @@ $this->load->helper('form');
         <div>
             <?php
                 echo form_open('Homepage/authorize');
-                echo form_submit('submit','Authorize');
+                echo form_submit('submit','Authorize','class="btn btn-default"');
                 echo form_close();
             ?>
         </div>
