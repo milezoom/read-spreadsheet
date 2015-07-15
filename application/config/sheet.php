@@ -11,7 +11,7 @@ $config['OAuth2URL'] = array(
     'base' => 'https://accounts.google.com/o/oauth2',
 	'auth' => 'auth', // for Google authorization
 	'token' => 'token', // for OAuth2 token actions
-	'redirect' => 'https://domain.com/oauth'
+	'redirect' => 'http://localhost/read-spreadsheet/index.php/authorized'
 );
 
 $config['clientID'] = '759581556765-51khqof20uk98f7r5cig2vje4bnjgob8.apps.googleusercontent.com';

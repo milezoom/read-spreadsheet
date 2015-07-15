@@ -37,4 +37,36 @@ function saveCredentials(array $data)
     $config = createConfig();
     file_put_contents($config['tokenDataFile'], $data);
 }
+
+function buildURL()
+{
+    $scopeList = array(GoogleSpreadsheet\API::API_BASE_URL);
+    $CI =& get_instance();
+    $OAuth2URL = $CI->config->item('OAuth2URL');
+    foreach ($scopeList as &$scopeItem)
+    {
+        $scopeItem = rtrim($scopeItem,'/') . '/';
+    }
+
+    $buildQuerystring = function(array $list) {
+		$querystringList = [];
+		foreach ($list as $key => $value) {
+			$querystringList[] = rawurlencode($key) . '=' . rawurlencode($value);
+		}
+		return implode('&',$querystringList);
+	};
+
+	return sprintf(
+		"%s/%s?%s\n\n",
+		$OAuth2URL['base'],$OAuth2URL['auth'],
+		$buildQuerystring([
+			'access_type' => 'offline',
+			'approval_prompt' => 'force',
+			'client_id' => $CI->config->item('clientID'),
+			'redirect_uri' => $OAuth2URL['redirect'],
+			'response_type' => 'code',
+			'scope' => implode(' ',$scopeList)
+		])
+	);
+}
 ?>
