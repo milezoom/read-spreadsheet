@@ -14,24 +14,37 @@ $this->load->helper('form');
     ?>
 </div>
 -->
-<p class="text-center">
+<br/>
+<h4 class="text-center">
     Login using email/password or Sign your email using form below.
-</p>
+</h4>
 <div class="container well box-block">
     <?php
         echo form_open('');
         echo '<div class="form-group">';
         echo '<label for="email">Email</label>';
         echo '<input type="email" class="form-control" id="email">';
+        try {
+            if (!empty($error_email)) {
+                echo '<div class="alert alert-danger" role="alert">'.$error_email.'</div>';
+            }
+        } catch (Exception $e) {
+        }
         echo '</div>';
         echo '<div class="form-group">';
         echo '<label for="password">Password</label>';
         echo '<input type="password" class="form-control" id="password">';
+        try {
+            if (!empty($error_email)) {
+                echo '<div class="alert alert-danger" role="alert">'.$error_pass.'</div>';
+            }
+        } catch (Exception $e) {
+        }
         echo '</div>';
         echo form_submit('submit', 'Login', 'class="btn btn-danger btn-block"');
         echo '<br/>';
         echo form_close();
-        echo form_open();
+        echo form_open('Homepage/signup');
         echo form_submit('submit', 'Sign Email', 'class="btn btn-primary btn-block"');
         echo form_close();
     ?>

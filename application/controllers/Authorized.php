@@ -1,11 +1,12 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+
+defined('BASEPATH') or exit('No direct script access allowed');
 class Authorized extends CI_Controller
 {
     public function index()
     {
         $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-        $access_code = substr($url,-45,45);
+        $access_code = substr($url, -45, 45);
 
         $this->load->helper('sheet_api');
         $oAuth = getOAuth2GoogleAPI();
@@ -15,18 +16,16 @@ class Authorized extends CI_Controller
 
         $data = array();
         $config = createConfig();
-        if(file_exists($config['tokenDataFile'])){
-            $data['is_exists'] = TRUE;
+        if (file_exists($config['tokenDataFile'])) {
+            $data['is_exists'] = true;
         } else {
-            $data['is_exists'] = FALSE;
+            $data['is_exists'] = false;
         }
 
         $this->pageTitle = 'Token';
         $this->headerText = 'Saving Token';
         $this->layout = 'Yes';
         $this->layoutName = 'default';
-        $this->load->view('frontpage',$data);
         $this->load->view('savingtoken', $data);
     }
 }
-?>
