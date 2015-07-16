@@ -19,3 +19,8 @@ body {
 .navbar {
     margin-top: 20px;
 }
+.box-block {
+    width: 25%;
+    min-width: 300px;
+    margin: auto;
+}

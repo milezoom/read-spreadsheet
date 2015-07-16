@@ -21,7 +21,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo base_url() ?>">Apps</a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>">Apps</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav"></ul>
@@ -39,10 +39,12 @@
     <footer class="footer center">
         <div class="container text-center">
             <h3>
+                <b>
                 <?php
                 date_default_timezone_set('Asia/Jakarta');
                 echo "&copy; ".date("Y");
                 ?>
+                </b>
             </h3>
         </div>
     </footer>
