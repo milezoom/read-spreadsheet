@@ -20,7 +20,6 @@ $this->load->helper('form');
                 echo $string;
             }
             echo '<br/>';
-            print_r($wsclist);
         ?>
         <br/><hr/>
         <h3 class="text-center">
