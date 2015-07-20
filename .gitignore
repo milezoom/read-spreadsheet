@@ -1,1 +1,5 @@
 ./assets/credentials/token_data
+./composer.json
+./composer.lock
+./contributing.md
+./readme.rst
