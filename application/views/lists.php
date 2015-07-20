@@ -14,7 +14,25 @@ $this->load->helper('form');
         </p>
         <div>
             <?php
-                print_r($list);
+                print_r($sslist);
+            ?>
+        </div>
+        <br>
+        <div>
+            <?php
+                print_r($wslist);
+            ?>
+        </div>
+        <br>
+        <div>
+            <?php
+                print_r($wsdlist);
+            ?>
+        </div>
+        <br>
+        <div>
+            <?php
+                print_r($wsclist);
             ?>
         </div>
     </body>
