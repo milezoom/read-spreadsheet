@@ -6,6 +6,7 @@ class Testing extends CI_Controller
     {
         $this->load->helper('sheet_api');
         $config = createConfig();
+        loadTokenFromDB();
         $token_data = unserialize(file_get_contents($config['tokenDataFile']));
         $oAuthInstance = getOAuth2GoogleAPI();
         $oAuthInstance->setTokenData(
@@ -22,7 +23,8 @@ class Testing extends CI_Controller
         $spreadsheetList = $spreadsheetAPI->getSpreadsheetList();
 
         $data['list'] = $spreadsheetList;
-
+        removeTokenFile();
+        
         $this->pageTitle = 'List';
         $this->headerText = 'Spreadsheet List';
         $this->layout = 'Yes';

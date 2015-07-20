@@ -39,8 +39,42 @@ function saveToken(array $data)
 {
     $CI = &get_instance();
 
+    $CI->load->database();
+    $token_data = array(
+        'id' => 1,
+        'access_token' => $data['accessToken'],
+        'expires_at' => $data['expiresAt'],
+        'token_type' => $data['tokenType'],
+        'refresh_token' => $data['refreshToken']
+    );
+    $tokens = $CI->db->get('token_data')->result_array();
+    if(empty($tokens)){
+        $CI->db->insert('token_data', $token_data);
+    } else {
+        $CI->db->update('token_data', $token_data);
+    }
+}
+
+function loadTokenFromDB()
+{
+    $CI = &get_instance();
     $config = createConfig();
-    file_put_contents($config['tokenDataFile'], serialize($data));
+    $CI->load->database();
+    $tokens = $CI->db->get('token_data')->result_array();
+    $token_data = array(
+        'accessToken' => $tokens[0]['access_token'],
+        'expiresAt' => $tokens[0]['expires_at'],
+        'tokenType' => $tokens[0]['token_type'],
+        'refreshToken' => $tokens[0]['refresh_token']
+    );
+    file_put_contents($config['tokenDataFile'], serialize($token_data));
+}
+
+function removeTokenFile()
+{
+    $CI = &get_instance();
+    $config = createConfig();
+    unlink($config['tokenDataFile']);
 }
 
 function buildURL()

@@ -15,8 +15,9 @@ class Authorized extends CI_Controller
         saveToken($token_data);
 
         $data = array();
-        $config = createConfig();
-        if (file_exists($config['tokenDataFile'])) {
+        $this->load->database();
+        $tokens = $this->db->get('token_data')->result_array();
+        if(empty($tokens)){
             $data['is_exists'] = true;
         } else {
             $data['is_exists'] = false;
