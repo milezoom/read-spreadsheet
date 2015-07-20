@@ -40,7 +40,7 @@ class Testing extends CI_Controller
         /*------------------- get data feed from cell range selected worksheet ----------------------*/
         //$cellRange = ['columnStart' => 1, 'columnEnd' => 3, 'rowStart' => 1, 'rowEnd' => 5]; //optional cell range
         $worksheetCellList = $spreadsheetAPI->getWorksheetCellList($spreadsheetIds[0], $worksheetIds[0]);//, $cellRange);
-        $data['wsclist'] = $worksheetCellList;
+        //$data['wsclist'] = $worksheetCellList;
         /*-------------------------------------------------------------------------------------------*/
 
         /*------------------ update value for selected cell (Cell A2 -> 'Kopi') ---------------------*/
