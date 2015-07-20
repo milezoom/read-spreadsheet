@@ -43,7 +43,7 @@ class Testing extends CI_Controller
         $data['wsclist'] = $worksheetCellList;
         /*-------------------------------------------------------------------------------------------*/
 
-        /*------------------- update value for selected cell (Cell A2 -> 'Kopi') ---------------------*/
+        /*------------------ update value for selected cell (Cell A2 -> 'Kopi') ---------------------*/
         $worksheetCellList['A2']->setValue('Kopi');
         $spreadsheetAPI->updateWorksheetCellList($spreadsheetIds[0], $worksheetIds[0], $worksheetCellList);
         /*-------------------------------------------------------------------------------------------*/
