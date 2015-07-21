@@ -12,23 +12,41 @@ $this->load->helper('form');
         <h3>
             Below is/are spreadsheet(s) on your Drive.
         </h3>
-        <?php
-            foreach ($sheetList as $key => $value) {
-                $worksheets = implode(',', $wsList[$key]);
-                $string = 'Spreadsheet: <b>'.$key.'</b> with ID="<b>'.$value.'</b>"';
-                $string .= " with worksheet id's: <b>".$worksheets.'</b>';
-                echo $string;
-            }
-            echo '<br/>';
-        ?>
-        <br/><hr/>
-        <h3 class="text-center">
-            <b>
-                Update spreadsheet.
-            </b>
-        </h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Spreadsheet ID
+                    </th>
+                    <th>
+                        Available Worksheet ID
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    foreach ($sheetList as $key => $value) {
+                        $worksheets = implode(',', $wsList[$key]);
+                        echo "<tr>";
+                        echo "<td>".$key."</td>";
+                        echo "<td>".$value."</td>";
+                        echo "<td>".$worksheets."</td>";
+                        echo "</tr>";
+                    }
+                ?>
+            </tbody>
+        </table>
+        <hr/>
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-6 content-left">
+                <h3 class="text-center">
+                    <b>
+                        Update spreadsheet.
+                    </b>
+                </h3>
                 <?php
                 echo form_open('Testing/update');
                 echo '<div class="form-group">';
@@ -47,7 +65,28 @@ $this->load->helper('form');
                 echo form_label('Updated Value', 'upvalue');
                 echo form_input('upvalue', '', 'class="form-control" placeholder="input value here"');
                 echo '</div>';
-                echo form_submit('submit', 'Update', 'class="btn btn-primary btn-block"');
+                echo form_submit('submit', 'Update', 'class="btn btn-primary text-center"');
+                echo form_close();
+                ?>
+            </div>
+            <div class="col-md-6 content-right">
+                <h3 class="text-center">
+                    <b>
+                        Write to new spreadsheet.
+                    </b><br/>
+                    <small>You need to re-authorize for this function, if you never use this function before.</small>
+                </h3>
+                <?php
+                echo form_open('Testing/write');
+                echo '<div class="form-group">';
+                echo form_label('Spreadsheet Name', 'sheetname');
+                echo form_input('sheetname', '', 'class="form-control" placeholder="ex. report-17-August"');
+                echo '</div>';
+                echo '<div class="form-group">';
+                echo form_label('Value to be written', 'writevalue');
+                echo form_input('writevalue', '', 'class="form-control" placeholder="separate multiple value with underscore (_)"');
+                echo '</div>';
+                echo form_submit('submit', 'Write', 'class="btn btn-primary text-center"');
                 echo form_close();
                 ?>
             </div>

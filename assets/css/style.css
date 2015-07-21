@@ -24,3 +24,10 @@ body {
     min-width: 300px;
     margin: auto;
 }
+.content-left {
+    border-right: 2px dashed #333;
+}
+hr {
+    border-top: 2px dashed #333;
+    height: 2px;
+}

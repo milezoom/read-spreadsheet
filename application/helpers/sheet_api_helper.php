@@ -115,3 +115,17 @@ function createSpreadsheetAPI($oAuth)
 
     return $api;
 }
+
+function writeNewSpreadsheetURL($filename,$strdata)
+{
+    $CI = &get_instance();
+    $sheetURL = $CI->config->item('scriptURL');
+    $data = array(
+        'filename' => $filename,
+        'data' => $strdata
+    );
+    $parameter = http_build_query($data);
+    $sheetURL .= $parameter;
+    return $sheetURL;
+
+}

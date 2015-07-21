@@ -100,5 +100,15 @@ class Testing extends CI_Controller
         $this->load->helper('url');
         redirect('Testing');
     }
+
+    public function write()
+    {
+        $this->load->helper('sheet_api');
+        $filename = $this->input->post('sheetname');
+        $data = $this->input->post('writevalue');
+        $url = writeNewSpreadsheetURL($filename, $data);
+        $this->load->helper('url');
+        redirect($url);
+    }
 }
 ?>
