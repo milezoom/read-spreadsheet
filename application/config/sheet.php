@@ -20,5 +20,9 @@ $config['clientSecret'] = 'qrlfT5KkPM4CZgFYB-RETh4l';
 
 $config['tokenDataFile'] = FCPATH.'assets/credentials/token_data';
 
-$config['scriptURL'] = 'https://script.google.com/a/macros/lazada.co.id/s/AKfycbzm9thAlsh5oSvmH279ZT6h-PGH2vjfCi6p17QgWmBZZZ0FThc/exec?';
+$config['scriptWriteURL'] = 'https://script.google.com/a/macros/lazada.co.id/s/AKfycbzm9thAlsh5oSvmH279ZT6h-PGH2vjfCi6p17QgWmBZZZ0FThc/exec?';
+
+$config['scriptAppendURL'] = 'https://script.google.com/a/macros/lazada.co.id/s/AKfycbyNLoRDWxUymyeCxMigxFhz4gFdtGZU0_qr-qclV7mU_C3oI0hA/exec?';
+
+$config['routeScriptURL'] = 'http://localhost/read-spreadsheet';
 ?>

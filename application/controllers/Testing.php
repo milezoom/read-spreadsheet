@@ -52,9 +52,16 @@ class Testing extends CI_Controller
         $sheetList = array();
         $wsList = array();
         foreach($spreadsheetIds as $key){
+            $temp_array = array();
             $sheetList[$spreadsheetList[$key]['name']] = $key;
-            $wsKeys = array_keys($spreadsheetAPI->getWorksheetList($key));
-            $wsList[$spreadsheetList[$key]['name']] = $wsKeys;
+            $worksheets = $spreadsheetAPI->getWorksheetList($key);
+            $wsKeys = array_keys($worksheets);
+            for($i = 0; $i < count($wsKeys); $i++){
+                $name = $worksheets[$wsKeys[$i]]['name'];
+                $id_name = $name.'('.$wsKeys[$i].')';
+                array_push($temp_array,$id_name);
+            }
+            $wsList[$spreadsheetList[$key]['name']] = $temp_array;
         }
         $data['sheetList'] = $sheetList;
         $data['wsList'] = $wsList;
@@ -107,6 +114,17 @@ class Testing extends CI_Controller
         $filename = $this->input->post('sheetname');
         $data = $this->input->post('writevalue');
         $url = writeNewSpreadsheetURL($filename, $data);
+        $this->load->helper('url');
+        redirect($url);
+    }
+
+    public function add()
+    {
+        $this->load->helper('sheet_api');
+        $spreadsheetId = $this->input->post('sheetid');
+        $worksname = $this->input->post('worksname');
+        $data = $this->input->post('writevalue');
+        $url = addNewRowURL($spreadsheetId, $worksname, $data);
         $this->load->helper('url');
         redirect($url);
     }

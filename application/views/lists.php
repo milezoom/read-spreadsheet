@@ -22,7 +22,7 @@ $this->load->helper('form');
                         Spreadsheet ID
                     </th>
                     <th>
-                        Available Worksheet ID
+                        Worksheet Name (ID)
                     </th>
                 </tr>
             </thead>
@@ -45,7 +45,8 @@ $this->load->helper('form');
                 <h3 class="text-center">
                     <b>
                         Update spreadsheet.
-                    </b>
+                    </b><br/>
+                    <small>Only for cell that already filled with data.</small>
                 </h3>
                 <?php
                 echo form_open('Testing/update');
@@ -87,6 +88,34 @@ $this->load->helper('form');
                 echo form_input('writevalue', '', 'class="form-control" placeholder="separate multiple value with underscore (_)"');
                 echo '</div>';
                 echo form_submit('submit', 'Write', 'class="btn btn-primary text-center"');
+                echo form_close();
+                ?>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h3 class="text-center">
+                    <b>
+                        Add new row to spreadsheet.
+                    </b><br/>
+                    <small>You need to re-authorize for this function, if you never use this function before.</small>
+                </h3>
+                <?php
+                echo form_open('Testing/add');
+                echo '<div class="form-group">';
+                echo form_label('Spreadsheet ID', 'sheetid');
+                echo form_input('sheetid', '', 'class="form-control" placeholder="ex. 1LX2q....."');
+                echo '</div>';
+                echo '<div class="form-group">';
+                echo form_label('Worksheet Name', 'worksname');
+                echo form_input('worksname', '', 'class="form-control" placeholder="ex. Sheet1"');
+                echo '</div>';
+                echo '<div class="form-group">';
+                echo form_label('Value to be written', 'writevalue');
+                echo form_input('writevalue', '', 'class="form-control" placeholder="separate multiple value with underscore (_)"');
+                echo '</div>';
+                echo form_submit('submit', 'Add Row', 'class="btn btn-primary text-center"');
                 echo form_close();
                 ?>
             </div>

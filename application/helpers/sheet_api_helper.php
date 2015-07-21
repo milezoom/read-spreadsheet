@@ -119,13 +119,30 @@ function createSpreadsheetAPI($oAuth)
 function writeNewSpreadsheetURL($filename,$strdata)
 {
     $CI = &get_instance();
-    $sheetURL = $CI->config->item('scriptURL');
+    $sheetURL = $CI->config->item('scriptWriteURL');
+    $routeURL = $CI->config->item('routeScriptURL');
     $data = array(
         'filename' => $filename,
-        'data' => $strdata
+        'data' => $strdata,
+        'homepage' => $routeURL
     );
     $parameter = http_build_query($data);
     $sheetURL .= $parameter;
     return $sheetURL;
+}
 
+function addNewRowURL($spreadsheetId,$sheetName,$strdata)
+{
+    $CI = &get_instance();
+    $sheetURL = $CI->config->item('scriptAppendURL');
+    $routeURL = $CI->config->item('routeScriptURL');
+    $data = array(
+        'ssid' => $spreadsheetId,
+        'sheetname' => $sheetName,
+        'data' => $strdata,
+        'homepage' => $routeURL
+    );
+    $parameter = http_build_query($data);
+    $sheetURL .= $parameter;
+    return $sheetURL;
 }
