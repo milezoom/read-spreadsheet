@@ -42,7 +42,7 @@ $this->load->helper('form');
                 <small>Only for cell that already filled with data.</small>
             </h3>
             <?php
-                echo form_open('Testing/update');
+                echo form_open('Spreadsheet/update');
                 echo '<div class="form-group">';
                 echo form_label('Spreadsheet ID', 'sheetid');
                 echo form_input('sheetid', '', 'class="form-control" placeholder="ex. 1LX2q....."');
@@ -71,7 +71,7 @@ $this->load->helper('form');
                 <small>You need to re-authorize for this function, if you never use this function before.</small>
             </h3>
             <?php
-                echo form_open('Testing/write');
+                echo form_open('Spreadsheet/write');
                 echo '<div class="form-group">';
                 echo form_label('Spreadsheet Name', 'sheetname');
                 echo form_input('sheetname', '', 'class="form-control" placeholder="ex. report-17-August"');
@@ -95,7 +95,7 @@ $this->load->helper('form');
                 <small>You need to re-authorize for this function, if you never use this function before.</small>
             </h3>
             <?php
-                echo form_open('Testing/add');
+                echo form_open('Spreadsheet/add');
                 echo '<div class="form-group">';
                 echo form_label('Spreadsheet ID', 'sheetid');
                 echo form_input('sheetid', '', 'class="form-control" placeholder="ex. 1LX2q....."');
@@ -123,7 +123,7 @@ $this->load->helper('form');
                 <small>You need to re-authorize for this function, if you never use this function before.</small>
             </h3>
             <?php
-                echo form_open('Testing/writeFromQuery');
+                echo form_open('Spreadsheet/writeFromQuery');
                 echo '<div class="form-group">';
                 echo form_label('Spreadsheet Name', 'sheetname');
                 echo form_input('sheetname', '', 'class="form-control" placeholder="ex. report-17-August"');
@@ -137,4 +137,4 @@ $this->load->helper('form');
             ?>
         </div>
     </div>
-<br/>   
+<br/>

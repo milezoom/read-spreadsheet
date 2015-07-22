@@ -20,7 +20,7 @@ $this->load->helper('form');
     </p>
     <div>
         <?php
-            echo form_open('Testing');
+            echo form_open('Spreadsheet');
             echo form_submit('submit', 'List File');
             echo form_close();
         ?>
