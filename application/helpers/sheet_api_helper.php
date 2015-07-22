@@ -146,3 +146,18 @@ function addNewRowURL($spreadsheetId,$sheetName,$strdata)
     $sheetURL .= $parameter;
     return $sheetURL;
 }
+
+function writeQuery2SheetURL($filename,$strdata)
+{
+    $CI = &get_instance();
+    $sheetURL = $CI->config->item('scriptQueryAppendURL');
+    $routeURL = $CI->config->item('routeScriptURL');
+    $data = array(
+        'filename' => $filename,
+        'data' => $strdata,
+        'homepage' => $routeURL
+    );
+    $parameter = http_build_query($data);
+    $sheetURL .= $parameter;
+    return $sheetURL;
+}

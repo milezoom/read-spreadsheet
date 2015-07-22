@@ -74,7 +74,6 @@ class Testing extends CI_Controller
         $this->layout = 'Yes';
         $this->layoutName = 'default';
         $this->load->view('lists', $data);
-        //$this->load->view('lists');
     }
 
     public function update()
@@ -127,6 +126,61 @@ class Testing extends CI_Controller
         $url = addNewRowURL($spreadsheetId, $worksname, $data);
         $this->load->helper('url');
         redirect($url);
+    }
+
+    public function writeFromQuery()
+    {
+        $filename = $this->input->post('sheetname');
+        $this->load->database('transaction');
+        $query = $this->input->post('query');
+        $result = $this->db->query($query)->result_array();
+        $maxRow = $this->config->item('maxRow');
+        if(count($result)>$maxRow){
+            $this::splitQueryResult($filename, $result);
+        } else {
+            $this->load->helper('sheet_api');
+            $arraydata = array();
+            foreach ($result as $value) {
+                $data = implode('_!',$value);
+                array_push($arraydata, $data);
+            }
+            $strdata = implode('()',$arraydata);
+            $url = writeQuery2SheetURL($filename, $strdata);
+            $this->load->helper('url');
+            redirect($url);
+        }
+    }
+
+    private function splitQueryResult($filename, $arraydata)
+    {
+        $bigrows = array_chunk($arraydata,5);
+        $this->load->helper('sheet_api');
+        $urls = array();
+        $rowcount = array();
+        $firstrow = 0;
+        $endrow = -1;
+        foreach ($bigrows as $rows) {
+            $endrow += count($rows);
+            $arraydata = array();
+            foreach ($rows as $row) {
+                $rowstr = implode('_!',$row);
+                array_push($arraydata, $rowstr);
+            }
+            $strdata = implode('()',$arraydata);
+            $url = writeQuery2SheetURL($filename, $strdata);
+            array_push($urls,$url);
+            array_push($rowcount,$firstrow.' - '.$endrow);
+            $firstrow += count($rows);
+        }
+
+        $data['urls'] = $urls;
+        $data['rowcount'] = $rowcount;
+
+        $this->pageTitle = 'Insert List';
+        $this->headerText = 'Insert Multiple To Spreadsheet';
+        $this->layout = 'Yes';
+        $this->layoutName = 'default';
+        $this->load->view('executelist', $data);
     }
 }
 ?>

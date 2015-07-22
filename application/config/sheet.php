@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 |
-| Config file for authorization app access to google spreadsheet
+| Needed config for spreadsheet api
 |
 */
 
@@ -24,5 +24,9 @@ $config['scriptWriteURL'] = 'https://script.google.com/a/macros/lazada.co.id/s/A
 
 $config['scriptAppendURL'] = 'https://script.google.com/a/macros/lazada.co.id/s/AKfycbyNLoRDWxUymyeCxMigxFhz4gFdtGZU0_qr-qclV7mU_C3oI0hA/exec?';
 
+$config['scriptQueryAppendURL'] = 'https://script.google.com/a/macros/lazada.co.id/s/AKfycbz65KuTaCnOLzX-F5rscKRdkh5X87gFLAinqi3Zmt8UwoaFvd0S/exec?';
+
 $config['routeScriptURL'] = 'http://localhost/read-spreadsheet';
+
+$config['maxRow'] = 5;
 ?>
