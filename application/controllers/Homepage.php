@@ -30,6 +30,6 @@ class Homepage extends CI_Controller
         $this->load->helper('sheet_api');
         $this->load->helper('url');
         loadTokenFromDB();
-        redirect('Testing');
+        redirect('Spreadsheet');
     }
 }
