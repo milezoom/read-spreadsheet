@@ -13,6 +13,13 @@ $this->load->helper('form');
             echo form_submit('submit','List File','class="btn btn-primary btn-block"');
             echo form_close();
             echo '</div>';
+            echo '<br/>';
+            echo '<h4 class="text-center">Or, if you want to re-authorize this app using different account, click button below.</h4><br/>';
+            echo '<div class="box-block">';
+            echo form_open('Homepage/authorize');
+            echo form_submit('submit','Re-Authorize','class="btn btn-danger btn-block"');
+            echo form_close();
+            echo '</div>';
         } else {
             echo '<h4 class="text-center">Missing token, please authorize this app with button below.</h4><br/>';
             echo '<div class="box-block">';
