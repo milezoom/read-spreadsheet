@@ -75,7 +75,7 @@ class Spreadsheet extends CI_Controller
         $this->layoutName = 'default';
         $this->load->view('lists', $data);
     }
-
+/*---------------------- FOR DEBUG PURPOSES -----------------------------------------
     public function update()
     {
         $this->load->helper('sheet_api');
@@ -127,7 +127,7 @@ class Spreadsheet extends CI_Controller
         $this->load->helper('url');
         redirect($url);
     }
-
+------------------------------------------------------------------------------------*/
     public function writeFromQuery()
     {
         $filename = $this->input->post('sheetname');
